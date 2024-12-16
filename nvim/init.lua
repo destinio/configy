@@ -18,10 +18,10 @@ vim.keymap.set("n", "<space>p", ":Ex<CR>", { silent = true })
 vim.keymap.set("v", "<space>x", ":.lua<CR>", { silent = true })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
-    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }), -- all this to clear the old event!
-    callback = function()
-        vim.highlight.on_yank()
-    end
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),   -- all this to clear the old event!
+  callback = function()
+    vim.highlight.on_yank()
+  end
 })
 
 vim.opt.number = true
