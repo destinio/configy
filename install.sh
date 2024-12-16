@@ -8,3 +8,4 @@ echo $CONFIG_DIR
 
 ln -s "$CWD/tmux.conf" "$HOME_DIR/.tmux.conf"
 ln -s "$CWD/vimrc" "$HOME_DIR/.vimrc"
+ln -s "$CWD/nvim/" "$CONFIG_DIR/nvim"
