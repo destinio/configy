@@ -1,10 +1,21 @@
+---@diagnostic disable: missing-fields
 return {
-  'nvim-treesitter/nvim-treesitter',
-  build = ':TSUpdate',
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
   config = function()
-    require 'nvim-treesitter.configs'.setup {
+    require("nvim-treesitter.configs").setup({
       -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-      ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+      ensure_installed = {
+        "c",
+        "lua",
+        "typescript",
+        "javascript",
+        "vim",
+        "vimdoc",
+        "query",
+        "markdown",
+        "markdown_inline",
+      },
 
       auto_install = true,
       ignore_install = { "javascript" },
@@ -31,6 +42,6 @@ return {
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
       },
-    }
-  end
+    })
+  end,
 }

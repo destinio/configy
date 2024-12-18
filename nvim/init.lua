@@ -17,7 +17,7 @@ vim.keymap.set("n", "<space>p", ":Ex<CR>", { silent = true })
 -- visual mode
 vim.keymap.set("v", "<space>x", ":.lua<CR>", { silent = true })
 
--- terminal
+-- terminal TODO: mov3e all terminal stuff
 --
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -25,35 +25,43 @@ vim.keymap.set("v", "<space>x", ":.lua<CR>", { silent = true })
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
--- vim.keymap.set('t', '<C-i>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-
-vim.api.nvim_create_autocmd('TextYankPost', {
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }), -- all this to clear the old event!
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }), -- all this to clear the old event!
   callback = function()
     vim.highlight.on_yank()
-  end
+  end,
 })
 
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = vim.api.nvim_create_augroup('term-open', { clear = true }), -- all this to clear the old event!
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = vim.api.nvim_create_augroup("term-open", { clear = true }), -- all this to clear the old event!
   callback = function()
     -- add configs here
-  end
+  end,
 })
 
-local job_id = 0
-vim.keymap.set("n", "<space>tt", function()
+-- end terminal
+
+-- local job_id = 0
+vim.keymap.set("n", "<space>tl", function()
   vim.cmd.vnew()
   vim.cmd.term()
-
-  job_id = vim.bo.channel
+  -- job_id = vim.bo.channel
 end, { silent = true, desc = "Term" })
-
-vim.keymap.set("n", "<space>tc", function()
-  vim.fn.chansend(job_id, { "ls -al\r\n" })
-end, { silent = true, desc = "Term with cmd" })
+-- newnew
+vim.keymap.set("n", "<space>tj", function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd("J") -- need to have J set to move windown see init.lua
+  vim.api.nvim_win_set_height(0, 5)
+  -- job_id = vim.bo.channel
+end, { silent = true, desc = "Term bottom" })
+--
+vim.keymap.set("n", "<space>tt", function()
+  vim.cmd.tabnew() -- Open a new tab
+  vim.cmd.term() -- Start a terminal
+end, { silent = true, desc = "Term bottom in new tab" })
 
 -- Todo: Terminal stuff
 -- vim.cmd.wincmd("J") -- put windwow on bottom <C_w>
@@ -79,18 +87,20 @@ vim.opt.splitbelow = true
 vim.opt.hlsearch = true
 vim.opt.undofile = true
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-vim.opt.inccommand = 'split'
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.inccommand = "split"
 vim.opt.cursorline = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 vim.o.laststatus = 3
