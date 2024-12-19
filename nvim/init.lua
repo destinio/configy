@@ -34,44 +34,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-vim.api.nvim_create_autocmd("TermOpen", {
-  group = vim.api.nvim_create_augroup("term-open", { clear = true }), -- all this to clear the old event!
-  callback = function()
-    -- add configs here
-  end,
-})
-
--- end terminal
-
--- local job_id = 0
-vim.keymap.set("n", "<space>tl", function()
-  vim.cmd.vnew()
-  vim.cmd.term()
-  -- job_id = vim.bo.channel
-end, { silent = true, desc = "Term" })
--- newnew
-vim.keymap.set("n", "<space>tj", function()
-  vim.cmd.vnew()
-  vim.cmd.term()
-  vim.cmd.wincmd("J") -- need to have J set to move windown see init.lua
-  vim.api.nvim_win_set_height(0, 5)
-  -- job_id = vim.bo.channel
-end, { silent = true, desc = "Term bottom" })
---
-vim.keymap.set("n", "<space>tt", function()
-  vim.cmd.tabnew() -- Open a new tab
-  vim.cmd.term() -- Start a terminal
-end, { silent = true, desc = "Term bottom in new tab" })
-
--- Todo: Terminal stuff
--- vim.cmd.wincmd("J") -- put windwow on bottom <C_w>
--- vim.api.nvim_win_set_width(0, 50)
--- make one for new tab
--- small at bottom
--- float
--- :nvim_open_win -- for float
--- Automaticly close Term buffer when exiting
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.shiftwidth = 4
