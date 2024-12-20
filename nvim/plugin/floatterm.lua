@@ -1,3 +1,8 @@
+--[[
+--
+--All thing's built in Terminal
+-- :h terminal
+--]]
 local state = {
   floating = {
     win = -1,
@@ -57,6 +62,8 @@ vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup("term-open", { clear = true }), -- all this to clear the old event!
   callback = function()
     -- add configs here
+    -- quick leave terminal
+    print("testseting")
   end,
 })
 
