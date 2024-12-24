@@ -1,5 +1,6 @@
 -- :h lsp
 -- :h grr - go to ref - but this lists all
+-- npm i -g @olrtg/emmet-language-server -- emmet
 return {
   {
     "folke/lazydev.nvim",
@@ -187,6 +188,7 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
         ruff = {},
+        html = {},
         --
 
         lua_ls = {

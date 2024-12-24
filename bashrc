@@ -129,6 +129,8 @@ alias gaa="git add ."
 alias gpom="git push origin main"
 alias batcat="batcat --color=always" # sudo apt install bat
 
+alias xnvim="NVIM_APPNAME=playground nvim"
+
 export FZF_DEFAULT_OPTS="--reverse --border=sharp --border-label='LOVE <3' --border-label-pos=-3:bottom --inline-info --height=25 --tabstop=2"
 
 # FZF
