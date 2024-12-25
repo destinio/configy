@@ -1,3 +1,5 @@
+-- https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation
+-- https://github.com/kdheepak/lazygit.nvim
 return {
   {
     "kdheepak/lazygit.nvim",
