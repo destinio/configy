@@ -138,7 +138,7 @@ alias fzf='fzf --preview="batcat --color=always {}"'
 
 # eval "$(fzf --bash)"
 
-export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:/opt/nvim-linux64/bin:/home/ash/.local/bin"
 
 export LESS=-R
 
