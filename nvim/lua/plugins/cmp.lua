@@ -101,6 +101,9 @@ return {
           { name = 'path' },
         },
       }
+
+      luasnip.filetype_extend('javascriptreact', { 'html' })
+      luasnip.filetype_extend('typescriptreact', { 'html' })
     end,
   },
 }

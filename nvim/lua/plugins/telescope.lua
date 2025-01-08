@@ -25,8 +25,11 @@ return {
     },
     config = function()
       local themes = require 'telescope.themes'
+      local defaults = vim.tbl_deep_extend('force', themes.get_ivy(), {
+        file_ignore_patterns = { 'node_modules', 'vendor' },
+      })
       require('telescope').setup {
-        defaults = themes.get_ivy(),
+        defaults = defaults,
         pickers = {
           -- find_files = {
           --   theme = 'ivy',
