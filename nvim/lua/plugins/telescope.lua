@@ -61,17 +61,14 @@ return {
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer' })
 
-      -- Slightly advanced example of overriding default behavior and theme
-      -- vim.keymap.set('n', '<leader>/', function()
-      --   -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-      --   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-      --     winblend = 10,
-      --     previewer = false,
-      --   })
-      -- end, { desc = '[/] Fuzzily search in current buffer' })
+      -- Need to conver these but they are not working right now
+      -- vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+      -- vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+      -- vim.keymap.set('n', 'gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+      -- vim.keymap.set('n', '<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+      -- vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+      -- vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
-      -- It's also possible to pass additional configuration options.
-      --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set('n', '<leader>s/', function()
         builtin.live_grep {
           grep_open_files = true,
