@@ -21,9 +21,6 @@ return {
         sources = {
           default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
           providers = {
-            snippets = {
-              score_offset = 200,
-            },
             lazydev = {
               name = 'LazyDev',
               module = 'lazydev.integrations.blink',

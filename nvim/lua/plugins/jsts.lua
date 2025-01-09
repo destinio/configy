@@ -32,15 +32,12 @@ return {
       },
       on_attach = function(config, bufNr)
         vim.keymap.set({ 'n', 'v' }, '<leader>io', ':TSToolsOrganizeImports<CR>', { desc = 'Imports Organize', silent = true, buffer = bufNr })
-
         vim.keymap.set({ 'n', 'v' }, '<leader>is', ':TSToolsSortImports<CR>', { desc = 'Imports Sort', silent = true, buffer = bufNr })
-
         vim.keymap.set({ 'n', 'v' }, '<leader>ir', ':TSToolsRemoveUnusedImports<CR>', {
           desc = 'Imports remove unused',
           silent = true,
           buffer = bufNr,
         })
-
         vim.keymap.set({ 'n', 'v' }, '<leader>ia', ':TSToolsAddMissingImports<CR>', {
           desc = 'Imports Add All missing',
           silent = true,
