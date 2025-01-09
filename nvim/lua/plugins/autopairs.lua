@@ -15,7 +15,7 @@ return {
   -- end,
   {
     'windwp/nvim-ts-autotag',
-    dependencies = { 'mattn/emmet-vim' },
+    -- dependencies = { 'mattn/emmet-vim' },
     config = function()
       require('nvim-ts-autotag').setup {
         opts = {
