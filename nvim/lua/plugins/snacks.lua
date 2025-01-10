@@ -2,11 +2,21 @@ return {
   {
     'folke/snacks.nvim',
     priority = 1000,
+    dependencies = {
+      { 'MunifTanjim/nui.nvim', lazy = true },
+      {
+        'j-hui/fidget.nvim',
+        opts = {
+          -- options
+        },
+      },
+    },
     lazy = false,
     ---@type snacks.Config
     ---@module 'snacks'
     opts = {
       bigfile = { enabled = true },
+      quickfile = { enabled = true },
       dashboard = {
         enabled = true,
         -- sections = {
@@ -23,13 +33,18 @@ return {
         --   },
         -- },
       },
+      notifier = {
+        -- your notifier configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      },
+      scope = { enabled = true },
       indent = { enabled = true },
       -- input = { enabled = true },
       -- notifier = {
       --   enabled = true,
       --   timeout = 3000,
       -- },
-      quickfile = { enabled = true },
       scroll = { enabled = true },
       statuscolumn = { enabled = true },
       -- words = { enabled = true },
@@ -40,6 +55,20 @@ return {
       },
     },
     keys = {
+      {
+        '<leader>n',
+        function()
+          Snacks.notifier.show_history()
+        end,
+        desc = 'Notification History',
+      },
+      {
+        '<leader>un',
+        function()
+          Snacks.notifier.hide()
+        end,
+        desc = 'Dismiss All Notifications',
+      },
       {
         '<leader>z',
         function()
