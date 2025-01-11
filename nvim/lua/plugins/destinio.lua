@@ -1,15 +1,10 @@
 return {
   {
-    'destinio/destinio.nvim',
+    dir = '~/projects/nvim-plugins/destinio.nvim', -- 'destinio/destinio.nvim'
     branch = 'nightly',
+    dependencies = {},
     config = function()
-      local destinio = require 'destinio'
-
-      destinio.setup()
-
-      vim.keymap.set('n', '<space>..', function()
-        require('destinio').nightly()
-      end, {})
+      require('destinio').setup()
     end,
   },
 }

@@ -46,7 +46,7 @@ return {
       --   timeout = 3000,
       -- },
       scroll = { enabled = true },
-      statuscolumn = { enabled = true },
+      -- statuscolumn = { enabled = true },
       -- words = { enabled = true },
       styles = {
         notification = {

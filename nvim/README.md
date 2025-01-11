@@ -7,6 +7,9 @@
 - StyleLua - `cargo install stylua --features lua54`
     - https://github.com/JohnnyMorganz/StyLua
 
+## Colors
+- Create - https://catbbrew.com/
+
 ## Todo
 
 - https://github.com/folke/snacks.nvim
