@@ -30,5 +30,13 @@
 - omnifunc - `<C_x> C_o>` - `:h ins-completion`
 
 ## TO READ
+
+## Help Docs
 - `:h ins-completion`
 - `:h insert.txt`
+
+## Posts
+- https://blog.boot.dev/clean-code/writing-good-unit-tests-dont-mock-database-connections/
+
+### plugins
+- https://github.com/ofirgall/open.nvim

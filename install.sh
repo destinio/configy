@@ -4,14 +4,34 @@ CWD="$(pwd)"
 HOME_DIR="$HOME"
 CONFIG_DIR="$HOME_DIR/.config"
 
-ln -s "$CWD/tmux.conf" "$HOME_DIR/.tmux.conf"
-ln -s "$CWD/vimrc" "$HOME_DIR/.vimrc"
-ln -s "$CWD/bashrc" "$HOME_DIR/.bashrc"
+# List of file names
+FILES=("vimrc" "bashrc" "zshrc" "tmux.conf" "sqliterc")
 
+# Function to create a symbolic link
+create_symlink() {
+    local target="$1"
+    local link="$2"
+
+    if [ -L "$link" ]; then
+        echo "Link already exists for $link -> $(readlink -f "$link")"
+    elif [ -e "$link" ]; then
+        echo "A regular file or directory already exists at $link!"
+    elif [ ! -e "$target" ]; then
+        echo "Target file $target does not exist!"
+    else
+        echo "Creating link for $target"
+        ln -s "$target" "$link"
+    fi
+}
+
+# Loop through the list and create symlinks
+for file in "${FILES[@]}"; do
+    create_symlink "$CWD/$file" "$HOME_DIR/.$file"
+done
+
+# Handle nvim directory separately
 if [ ! -d "$CONFIG_DIR/nvim" ]; then
-    ln -s "$CWD/nvim/" "$CONFIG_DIR/nvim"
+    create_symlink "$CWD/nvim/" "$CONFIG_DIR/nvim"
 else
-    echo "Nvim is already there man!!!"
+    echo "Nvim configuration already exists as a directory!"
 fi
-
-source "$HOME_DIR/.bashrc"
