@@ -3,6 +3,7 @@
 CWD="$(pwd)"
 HOME_DIR="$HOME"
 CONFIG_DIR="$HOME_DIR/.config"
+LOCAL_BIN="$HOME_DIR/.local/bin"
 
 # List of file names
 FILES=("vimrc" "bashrc" "zshrc" "tmux.conf" "sqliterc")
@@ -34,4 +35,10 @@ if [ ! -d "$CONFIG_DIR/nvim" ]; then
     create_symlink "$CWD/nvim/" "$CONFIG_DIR/nvim"
 else
     echo "Nvim configuration already exists as a directory!"
+fi
+
+if [ ! -f "$HOME_DIR/bin/tome.sh" ]; then
+    create_symlink "$CWD/tome.sh" "$LOCAL_BIN/tome"
+else
+    echo "tome is already installed"
 fi
