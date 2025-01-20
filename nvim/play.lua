@@ -1,5 +1,9 @@
-function TestMe(name)
+local function say_name()
+  local name = 'destin'
+
   print(name)
 end
 
-TestMe 'joe 2d'
+local name = 'destin'
+
+say_name()
