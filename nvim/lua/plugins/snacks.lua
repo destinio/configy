@@ -4,16 +4,8 @@ return {
     priority = 1000,
     dependencies = {
       { 'MunifTanjim/nui.nvim', lazy = true },
-      {
-        'j-hui/fidget.nvim',
-        opts = {
-          -- options
-        },
-      },
     },
     lazy = false,
-    ---@type snacks.Config
-    ---@module 'snacks'
     opts = {
       bigfile = { enabled = true },
       quickfile = { enabled = true },
@@ -27,16 +19,13 @@ return {
       zen = { enabled = true },
       styles = {
         notification = {
-          -- wo = { wrap = true } -- Wrap notifications
+          wo = { wrap = true }, -- Wrap notifications
         },
         zen = {
           minimal = true,
           backdrop = { transparent = false },
         },
       },
-      -- statuscolumn = { enabled = true },
-      -- words = { enabled = true },
-      -- input = { enabled = true },
     },
     keys = {
       {
@@ -94,7 +83,6 @@ return {
       vim.api.nvim_create_autocmd('User', {
         pattern = 'VeryLazy',
         callback = function()
-          -- Create some toggle mappings
           Snacks.toggle.dim():map '<leader>uD'
         end,
       })

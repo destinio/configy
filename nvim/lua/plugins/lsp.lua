@@ -56,6 +56,29 @@ return {
       local util = require 'lspconfig/util'
 
       local servers = {
+        bashls = {},
+        clangd = {
+          cmd = { 'clangd', '--background-index' },
+          filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+          root_dir = util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git'),
+          settings = {
+            ccls = {
+              completion = {
+                filterAndSort = false,
+              },
+            },
+          },
+        },
+        intelephense = {
+          settings = {
+            intelephense = {
+              format = {
+                enable = true,
+              },
+            },
+          },
+        },
+        cssls = {},
         ts_ls = {
           enabled = false,
         },
@@ -114,8 +137,8 @@ return {
           },
         },
         pyright = {},
-        --    https://github.com/pmizio/typescript-tools.nvim
-        -- ts_ls = {},
+        shfmt = {},
+        tailwindcss = {},
         lua_ls = {
           settings = {
             Lua = {

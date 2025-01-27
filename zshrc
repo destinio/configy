@@ -112,10 +112,12 @@ alias ..="cd .."
 
 alias xnvim="NVIM_APPNAME=playground nvim"
 
-export FZF_DEFAULT_OPTS="--reverse --border=sharp --border-label='LOVE <3' --border-label-pos=-3:bottom --inline-info --height=25 --tabstop=2"
 
 # FZF
+export FZF_DEFAULT_OPTS="--reverse --border=sharp --border-label='LOVE <3' --border-label-pos=-3:bottom --inline-info --height=25 --tabstop=2"
 alias fzf='fzf --preview="batcat --color=always {}"'
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
