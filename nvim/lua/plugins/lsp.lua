@@ -24,6 +24,7 @@ return {
       }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+      'zapling/mason-conform.nvim',
       'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
