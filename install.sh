@@ -7,6 +7,7 @@ LOCAL_BIN="$HOME_DIR/.local/bin"
 
 # List of file names
 FILES=("vimrc" "bashrc" "zshrc" "tmux.conf" "sqliterc")
+DIRS=("ghostty")
 
 # Function to create a symbolic link
 create_symlink() {
@@ -28,6 +29,11 @@ create_symlink() {
 # Loop through the list and create symlinks
 for file in "${FILES[@]}"; do
     create_symlink "$CWD/$file" "$HOME_DIR/.$file"
+done
+
+# Loop through the list of directories and create symlinks
+for dir in "${DIRS[@]}"; do
+    create_symlink "$CWD/$dir" "$CONFIG_DIR/$dir"
 done
 
 # Handle nvim directory separately
