@@ -1,3 +1,4 @@
+-- Function to get the word under the cursor
 local get_word = function()
   local line = vim.api.nvim_get_current_line()
   local col = vim.api.nvim_win_get_cursor(0)[2] - 1
@@ -8,6 +9,7 @@ local get_word = function()
   return left .. right
 end
 
+-- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
@@ -16,6 +18,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- DefineIt command - get the definition of the word under the cursor
 vim.api.nvim_create_user_command('DefineIt', function()
   local Popup = require 'nui.popup'
   local event = require('nui.utils.autocmd').event
