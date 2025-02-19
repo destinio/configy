@@ -107,11 +107,12 @@ alias gaa="git add ."
 alias gpoh="git push origin HEAD"
 alias batcat="batcat --color=always" # sudo apt install bat
 
+alias ta="tmux attach"
+
 alias ll="ls -al"
 alias ..="cd .."
 
 alias xnvim="NVIM_APPNAME=playground nvim"
-
 
 # FZF
 export FZF_DEFAULT_OPTS="--reverse --border=sharp --border-label='LOVE <3' --border-label-pos=-3:bottom --inline-info --height=25 --tabstop=2"
@@ -119,19 +120,17 @@ alias fzf='fzf --preview="batcat --color=always {}"'
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
+# NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+# HERD
 # Herd injected PHP 8.3 configuration.
 export HERD_PHP_83_INI_SCAN_DIR="/Users/destin/Library/Application Support/Herd/config/php/83/"
-
-
 # Herd injected PHP binary.
 export PATH="/Users/destin/Library/Application Support/Herd/bin/":$PATH
-
-
 # Herd injected PHP 8.4 configuration.
 export HERD_PHP_84_INI_SCAN_DIR="/Users/destin/Library/Application Support/Herd/config/php/84/"
 
@@ -143,3 +142,5 @@ if [ -f '/Users/destin/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/destin/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/destin/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I/usr/local/opt/tcl-tk/include' --with-tcltk-libs='-L/usr/local/opt/tcl-tk/lib'"

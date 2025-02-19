@@ -17,3 +17,7 @@ set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 set('t', 'jk', [[<C-\><C-n>]], opts)
 set('t', 'jj', [[<C-\><C-n>]], opts)
 set('t', 'kk', [[<C-\><C-n>]], opts)
+
+-- Copiolet
+set('n', '<leader>cx', '<CMD>Copilot disable<CR>', { desc = '[C]opiolet [D]isable' })
+set('n', '<leader>ce', '<CMD>Copilot enable<CR>', { desc = '[C]opiolet [E]nable' })

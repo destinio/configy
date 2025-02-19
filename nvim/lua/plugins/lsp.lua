@@ -79,6 +79,7 @@ return {
             },
           },
         },
+        checkmake = {},
         cssls = {},
         ts_ls = {
           enabled = false,
