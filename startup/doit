@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Use `find` to list all directories inside $HOME/projects with depth 1 (no nested directories)
+# Pipe the results into `fzf` for interactive fuzzy searching
+selected=$(find "$HOME/projects" -maxdepth 1 -mindepth 1 -type d | fzf)
+
+# If no selection is made (empty result), exit without doing anything
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+# Extract the selected directory's basename (project name) and replace characters `:`, `,`, and space with `_`
+selected_project_name=$(basename "$selected" | tr ":,. " "____")
+
+# Function to switch to an existing tmux session
+switch_to() {
+  if [[ -z "$TMUX" ]]; then                       # Check if tmux is running
+    tmux attach-session -t $selected_project_name # If not inside tmux, attach to the session
+  else
+    tmux switch-client -t $selected_project_name # If inside tmux, switch to the session
+  fi
+
+}
+
+# Check if a tmux session with the project name already exists
+if tmux has-session -t="$selected_project_name" 2>/dev/null; then
+  switch_to # If session exists, switch to it
+  exit 0    # Exit the script - no need to run start up scripts as the session already exists
+fi
+
+# Create a new tmux session in detached mode (-d) with the name of the project and set its working directory (-c)
+tmux new-session -ds "$selected_project_name" -c "$selected"
+tmux send-keys -t "$selected_project_name" "d-ready-parent" C-m
+
+# Switch to the newly created session
+switch_to

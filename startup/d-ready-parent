@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ -x ./.d-ready ]]; then
+  ./.d-ready
+elif [[ -x ~/.d-ready ]]; then
+  ~/.d-ready
+fi
+clear

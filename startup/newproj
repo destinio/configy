@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+proj_name=$1
+proj_dir=$HOME/projects
+
+if [ -z "$proj_name" ]; then
+  echo "Usage: newproj <project_name>"
+  exit 1
+fi
+
+if [ -d "$proj_dir/$proj_name" ]; then
+  echo "Project already exists"
+  exit 1
+fi
+
+if [ ! -d $proj_dir ]; then
+  echo "Creating projects directory $proj_dir"
+fi
+
+echo "Creating: $proj_dir/$proj_name"
+mkdir -p $proj_dir/$proj_name
+
+cd $proj_dir/$proj_name
+
+echo "Creating git repository"
+git init
+
+echo "Creating README.md"
+echo "# $proj_name" >README.md
+
+echo "Creating .gitignore"
+curl -s -o .gitignore https://www.toptal.com/developers/gitignore/api/linux,macos
+
+echo "Creating .d-ready"
+touch .d-ready && chmod +x .d-ready
+echo "#!/bin/bash" >.d-ready
+
+# Function to switch to an existing tmux session
+switch_to() {
+  if [[ -z "$TMUX" ]]; then           # Check if tmux is running
+    tmux attach-session -t $proj_name # If not inside tmux, attach to the session
+  else
+    tmux switch-client -t $proj_name # If inside tmux, switch to the session
+  fi
+
+}
+
+# # Check if a tmux session with the project name already exists
+if tmux has-session -t="$proj_name" 2>/dev/null; then
+  switch_to # If session exists, switch to it
+  exit 0    # Exit the script - no need to run start up scripts as the session already exists
+fi
+#
+# # Create a new tmux session in detached mode (-d) with the name of the project and set its working directory (-c)
+tmux new-session -ds "$proj_name" -c "$proj_dir/$proj_name"
+# tmux send-keys -t "$selected_project_name" "d-ready-parent" C-m
+#
+# # Switch to the newly created session
+echo "Starting... Have fun!"
+sleep 1 # Wait for tmux to create the session
+switch_to
