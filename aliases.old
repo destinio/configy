@@ -16,10 +16,6 @@ alias gcm="git commit -m"
 alias gaa="git add ."
 alias gpoh="git push origin HEAD"
 
-## Gitignore
-### Node
-alias gain="curl -o .gitignore https://www.toptal.com/developers/gitignore/api/node,macos"
-
 
 # Tmux
 alias ta="tmux attach"
@@ -38,9 +34,3 @@ alias batcat="batcat --color=always" # Requires `batcat` installed
 ##### This file is oftern appended to. The following are aliases that I have not yet sorted into the above categories.
 
 alias weather="curl -s https://wttr.in/madison?u | head -7 | tail -n 5"
-
-## Ollama
-alias chat="clear && ollama run codegemma"
-
-## tree
-alias tree="tree --gitignore -C -I 'node_modules|dist|build|.git'"

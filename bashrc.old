@@ -59,6 +59,17 @@ fi
 unset color_prompt
 
 # =====================
+# FZF Configuration
+# =====================
+export FZF_DEFAULT_OPTS="--reverse --border=sharp --border-label='LOVE <3' --border-label-pos=-3:bottom --inline-info --height=25 --tabstop=2"
+alias fzf='fzf --preview="batcat --color=always {}"'
+
+# Enable fzf key bindings and completion
+if command -v fzf >/dev/null; then
+  eval "$(fzf --bash)"
+fi
+
+# =====================
 # Bash Completion
 # =====================
 if ! shopt -oq posix; then
@@ -94,23 +105,9 @@ fi
 export PATH="$HOME/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 
+# test
+
 # =====================
 if [[ -f ~/.aliases ]]; then
   source ~/.aliases
 fi
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# =====================
-# FZF Configuration
-# =====================
-export FZF_DEFAULT_OPTS="--reverse --border=sharp --border-label='LOVE <3' --border-label-pos=-3:bottom --inline-info --height=25 --tabstop=2"
-alias fzf='fzf --preview="batcat --color=always {}"'
-
-# Set up fzf key bindings and fuzzy completion
-eval "$(fzf --bash)"
-
-# PYTHON
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
