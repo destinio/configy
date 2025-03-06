@@ -13,8 +13,10 @@ if [ ! -d "$CONFIG_DIR" ]; then
 fi
 
 # List of file names
-FILES=("vimrc" "bashrc" "aliases" "tmux.conf" "sqliterc")
-DIRS=("ghostty")
+HOME_FILES=("vimrc" "bashrc" "aliases" "tmux.conf" "sqliterc")
+HOME_DIRS=("ghostty")
+
+CONFIG_DIRS=("nvim" "aerospace")
 
 # Function to create a symbolic link
 create_symlink() {
@@ -34,21 +36,25 @@ create_symlink() {
 }
 
 # Loop through the list and create symlinks
-for file in "${FILES[@]}"; do
+for file in "${HOME_FILES[@]}"; do
   create_symlink "$CWD/$file" "$HOME_DIR/.$file"
 done
 
 # Loop through the list of directories and create symlinks
-for dir in "${DIRS[@]}"; do
+for dir in "${HOME_DIRS[@]}"; do
   create_symlink "$CWD/$dir" "$CONFIG_DIR/$dir"
 done
 
-# Handle nvim directory separately
-if [ ! -d "$CONFIG_DIR/nvim" ]; then
-  create_symlink "$CWD/nvim/" "$CONFIG_DIR/nvim"
-else
-  echo "Nvim configuration already exists as a directory!"
-fi
+# Loop through the list of config directories and create symlinks
+for dir in "${CONFIG_DIRS[@]}"; do
+  if [ ! -d "$CONFIG_DIR/$dir" ]; then
+    create_symlink "$CWD/$dir" "$CONFIG_DIR/$dir"
+  else
+    echo "$dir already exists as a directory!"
+  fi
+done
+
+## TODO: Add support for creating symlinks for directories
 
 if [ ! -f "$HOME_DIR/bin/tome.sh" ]; then
   create_symlink "$CWD/tome.sh" "$LOCAL_BIN/tome"
