@@ -1,63 +1,46 @@
 #!/bin/bash
 
-CWD="$(pwd)"
+source ./funcs.sh
+
+clear
+
+logit "Welcome let's create some environment links\n" -g
+
 HOME_DIR="$HOME"
 CONFIG_DIR="$HOME_DIR/.config"
-XDG_CONFIG_HOME="$CONFIG_DIR"
-LOCAL_BIN="$HOME_DIR/.local/bin"
 
-# Create the .config directory if it doesn't exist
-if [ ! -d "$CONFIG_DIR" ]; then
-  echo "Creating $CONFIG_DIR"
-  mkdir -p "$CONFIG_DIR"
-fi
+# Local dirs
+# Format: "local_dir:target_dir" - this is split into local and target
+LOCAL_DIRS=("bin:$HOME/.local/bin/" "config:$HOME/.config/" "home_hidden:$HOME/.")
 
-# List of file names
-HOME_FILES=("vimrc" "bashrc" "aliases" "tmux.conf" "sqliterc")
-HOME_DIRS=("ghostty")
+# Loop over the local dirs
+for dir in "${LOCAL_DIRS[@]}"; do
+  # Split the dir into target and link
+  local=$(echo $dir | cut -d':' -f1)
+  target=$(echo $dir | cut -d':' -f2)
 
-CONFIG_DIRS=("nvim" "aerospace")
+  logit "Processing $local....\n" -g
 
-# Function to create a symbolic link
-create_symlink() {
-  local target="$1"
-  local link="$2"
+  cd $local
 
-  if [ -L "$link" ]; then
-    echo "Link already exists for $link -> $(readlink -f "$link")"
-  elif [ -e "$link" ]; then
-    echo "A regular file or directory already exists at $link!"
-  elif [ ! -e "$target" ]; then
-    echo "Target file $target does not exist!"
-  else
-    echo "Creating link for $target"
-    ln -s "$target" "$link"
+  files=$(find . -type f -maxdepth 1 -mindepth 1)
+  dirs=$(find . -type d -maxdepth 1 -mindepth 1)
+
+  if [ ! -z "$files" ]; then
+    for file in $files; do
+      file=$(echo $file | cut -d'/' -f2)
+      create_symlink "$(pwd)/$file" "$target$file"
+    done
   fi
-}
 
-# Loop through the list and create symlinks
-for file in "${HOME_FILES[@]}"; do
-  create_symlink "$CWD/$file" "$HOME_DIR/.$file"
-done
-
-# Loop through the list of directories and create symlinks
-for dir in "${HOME_DIRS[@]}"; do
-  create_symlink "$CWD/$dir" "$CONFIG_DIR/$dir"
-done
-
-# Loop through the list of config directories and create symlinks
-for dir in "${CONFIG_DIRS[@]}"; do
-  if [ ! -d "$CONFIG_DIR/$dir" ]; then
-    create_symlink "$CWD/$dir" "$CONFIG_DIR/$dir"
-  else
-    echo "$dir already exists as a directory!"
+  if [[ ! -z "$dirs" ]]; then
+    for d in $dirs; do
+      d=$(echo $d | cut -d'/' -f2)
+      create_symlink "$(pwd)/$d" "$target$d"
+    done
   fi
+
+  echo -e "\n"
+
+  cd ..
 done
-
-## TODO: Add support for creating symlinks for directories
-
-if [ ! -f "$HOME_DIR/bin/tome.sh" ]; then
-  create_symlink "$CWD/tome.sh" "$LOCAL_BIN/tome"
-else
-  echo "tome is already installed"
-fi
