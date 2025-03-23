@@ -4,7 +4,7 @@ set -o vi
 # =====================
 # PATH Configuration
 # =====================
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.pyenv/bin:$GOPATH/bin:$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.pyenv/bin:$GOPATH/bin:$HOME/.cargo/bin:$HOME/.local/opt/go/bin:$HOME/go/bin:$PATH"
 
 # Silence macOS bash deprecation warning
 export BASH_SILENCE_DEPRECATION_WARNING=1

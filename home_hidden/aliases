@@ -13,6 +13,7 @@ alias grep='grep --color=auto'
 # Git
 alias gst="git status"
 alias gcm="git commit -m"
+alias gco="git checkout"
 alias gaa="git add ."
 alias gpoh="git push origin HEAD"
 

@@ -79,11 +79,13 @@ automatically-unhide-macos-hidden-apps = false
     alt-equal = 'resize smart +50'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-    ctrl-1 = 'workspace T'
-    ctrl-2 = 'workspace C'
-    ctrl-3 = 'workspace S'
-    ctrl-4 = 'workspace O'
-    ctrl-7 = 'workspace K'
+    ctrl-1 = 'workspace O'
+    ctrl-2 = 'workspace S'
+    ctrl-3 = 'workspace K'
+
+    ctrl-7 = 'workspace C'
+    ctrl-8 = 'workspace T'
+    ctrl-9 = 'workspace OBS'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace T'
@@ -135,12 +137,12 @@ if.app-id = 'com.tinyspeck.slackmacgap' # Slack
 run = 'move-node-to-workspace S'
 
 [[on-window-detected]]
-if.app-id = 'com.amazon.Lassen' # Kindle
-run = ['move-node-to-workspace K']
-
-[[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = ['layout floating', 'move-node-to-workspace O']
+
+[[on-window-detected]]
+if.app-id = 'com.obsproject.obs-studio'
+run = ['move-node-to-workspace OBS']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.AppStore'
@@ -156,4 +158,8 @@ run = ['layout floating', 'move-node-to-workspace O']
 
 [[on-window-detected]]
 if.app-id = 'com.spotify.client' # Spotify
+run = ['layout floating', 'move-node-to-workspace O']
+
+[[on-window-detected]]
+if.app-id = 'com.amazon.Lassen' # Kindle
 run = ['layout floating', 'move-node-to-workspace O']

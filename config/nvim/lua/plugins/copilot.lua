@@ -24,6 +24,16 @@ return {
       vim.keymap.set('i', '<C-x>', '<Plug>(copilot-dismiss)')
       vim.keymap.set('i', '<C-.>', '<Plug>(copilot-suggest)')
       vim.keymap.set('i', '<C-f>', '<Plug>(copilot-accept-word)')
+
+      vim.keymap.set('n', '<leader>cd', function()
+        vim.cmd 'Copilot disable'
+        print 'Copilot disabled'
+      end, { desc = '[D]isable Copilot' })
+
+      vim.keymap.set('n', '<leader>ce', function()
+        vim.cmd 'Copilot enable'
+        print 'Copilot enabled'
+      end, { desc = '[E]nable Copilot ' })
     end,
   },
 }
