@@ -19,6 +19,8 @@ return {
       --   replace_keycodes = false,
       -- })
 
+      local notify = require 'notify'
+
       vim.keymap.set('i', '<C-n>', '<Plug>(copilot-next)')
       vim.keymap.set('i', '<C-p>', '<Plug>(copilot-previous)')
       vim.keymap.set('i', '<C-x>', '<Plug>(copilot-dismiss)')
@@ -27,12 +29,22 @@ return {
 
       vim.keymap.set('n', '<leader>cd', function()
         vim.cmd 'Copilot disable'
-        print 'Copilot disabled'
+        -- print 'Copilot disabled'
+        notify('Copilot disabled', 'info', {
+          title = 'Copilot',
+          timeout = 1000,
+          render = 'compact',
+        })
       end, { desc = '[D]isable Copilot' })
 
       vim.keymap.set('n', '<leader>ce', function()
         vim.cmd 'Copilot enable'
-        print 'Copilot enabled'
+        notify('Copilot enable', 'info', {
+          title = 'Copilot',
+          timeout = 1000,
+          render = 'compact',
+        })
+        -- print 'Copilot enabled'
       end, { desc = '[E]nable Copilot ' })
     end,
   },

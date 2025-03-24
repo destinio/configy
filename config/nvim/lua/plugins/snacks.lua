@@ -12,7 +12,7 @@ return {
       dashboard = {
         enabled = true,
       },
-      notifier = { enabled = true },
+      -- notifier = { enabled = true },
       scope = { enabled = true },
       indent = { enabled = true },
       scroll = { enabled = true },
