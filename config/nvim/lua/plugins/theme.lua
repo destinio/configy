@@ -3,7 +3,6 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1000,
-    -- https://github.com/catppuccin/nvim?tab=readme-ov-file#integrations
     integrations = {
       gitsigns = true,
       nvimtree = true,
@@ -20,17 +19,14 @@ return {
     config = function()
       require('catppuccin').setup {
         flavour = 'mocha',
-        -- https://github.com/catppuccin/nvim?tab=readme-ov-file#overwriting-highlight-groups
         highlight_overrides = {
           mocha = function(mocha)
             return {
               Pmenu = { bg = mocha.base },
               PmenuSel = { bg = '#202020' },
-              -- BlinkCmpMenu = { bg = mocha.base },
             }
           end,
         },
-        -- https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md
         color_overrides = {
           all = {
             text = '#ffffff',
