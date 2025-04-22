@@ -4,6 +4,7 @@ return {
     event = 'InsertEnter',
     dependencies = {
       {
+        -- https://github.com/L3MON4D3/LuaSnip
         'L3MON4D3/LuaSnip',
         build = (function()
           if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
@@ -12,9 +13,6 @@ return {
           return 'make install_jsregexp'
         end)(),
         dependencies = {
-          -- `friendly-snippets` contains a variety of premade snippets.
-          --    See the README about individual language/framework/plugin snippets:
-          --    https://github.com/rafamadriz/friendly-snippets
           {
             'rafamadriz/friendly-snippets',
             config = function()
@@ -40,51 +38,22 @@ return {
           end,
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
-
-        -- For an understanding of why these mappings were
-        -- chosen, you will need to read `:help ins-completion`
-        --
-        -- No, but seriously. Please read `:help ins-completion`, it is really good!
+        -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance
+        window = {
+          -- completion = cmp.config.window.bordered(),
+          -- documentation = cmp.config.window.bordered(),
+        },
         mapping = cmp.mapping.preset.insert {
+          --  https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
           ['<C-n>'] = cmp.mapping.select_next_item(),
           ['<C-p>'] = cmp.mapping.select_prev_item(),
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
           ['<C-y>'] = cmp.mapping.confirm { select = true },
-
-          -- If you prefer more traditional completion keymaps,
-          -- you can uncomment the following lines
-          --['<CR>'] = cmp.mapping.confirm { select = true },
-          --['<Tab>'] = cmp.mapping.select_next_item(),
-          --['<S-Tab>'] = cmp.mapping.select_prev_item(),
-
           -- Manually trigger a completion from nvim-cmp.
-          --  Generally you don't need this, because nvim-cmp will display
-          --  completions whenever it has completion options available.
           ['<C-Space>'] = cmp.mapping.complete {},
-
-          -- Think of <c-l> as moving to the right of your snippet expansion.
-          --  So if you have a snippet that's like:
-          --  function $name($args)
-          --    $body
-          --  end
-          --
-          -- <c-l> will move you to the right of each of the expansion locations.
-          -- <c-h> is similar, except moving you backwards.
-          ['<C-l>'] = cmp.mapping(function()
-            if luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            end
-          end, { 'i', 's' }),
-          ['<C-h>'] = cmp.mapping(function()
-            if luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            end
-          end, { 'i', 's' }),
-
-          -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-          --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
+        -- sources are the completion sources see:
         sources = {
           {
             name = 'lazydev',
@@ -96,6 +65,38 @@ return {
           { name = 'path' },
         },
       }
+
+      -- END of cmp setup
+      -- snippets
+      -- TODO: move to snippets.lua
+      local s = luasnip.snippet
+      local i = luasnip.insert_node
+      local t = luasnip.text_node
+      local f = luasnip.function_node
+
+      local snippets = {
+        s('cl', {
+          t 'console.log(',
+          i(1),
+          t ')',
+        }),
+        -- insert file name without extension inline
+        -- for a function like function <filename>() {}
+        s('ff', {
+          t 'function ',
+          f(function()
+            return vim.fn.expand '%:t:r'
+          end),
+          t '() {',
+          i(1),
+          t '}',
+        }),
+      }
+
+      luasnip.add_snippets('typescript', snippets)
+      luasnip.add_snippets('typescriptreact', snippets)
+      luasnip.add_snippets('javascript', snippets)
+      luasnip.add_snippets('javascriptreact', snippets)
     end,
   },
 }

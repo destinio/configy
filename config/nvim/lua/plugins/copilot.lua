@@ -7,7 +7,7 @@ return {
         dependencies = {},
         build = 'make tiktoken', -- Only on MacOS or Linux
         opts = {
-          enabled = false,
+          model = 'claude-3.7-sonnet',
         },
       },
     },
@@ -25,6 +25,10 @@ return {
         timeout = 1000,
         render = 'compact',
       }
+
+      vim.keymap.set('n', '<leader>cc', function()
+        vim.cmd 'CopilotChatToggle'
+      end, { desc = '[C]opilot Chat' })
 
       vim.keymap.set('n', '<leader>cd', function()
         vim.cmd 'Copilot disable'

@@ -2,6 +2,7 @@
 ---@field config? fun(opts:trouble.Config)
 local opts = {
   focus = true,
+  auto_close = true,
   modes = {
     mydiags = {
       mode = 'diagnostics', -- inherit from diagnostics mode

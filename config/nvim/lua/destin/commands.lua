@@ -18,6 +18,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Disable automatic comment insertion on new lines
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function()
+    vim.opt_local.formatoptions:remove { 'r', 'o' }
+  end,
+})
+
 -- DefineIt command - get the definition of the word under the cursor
 vim.api.nvim_create_user_command('DefineIt', function()
   local Popup = require 'nui.popup'

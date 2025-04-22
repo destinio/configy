@@ -19,3 +19,16 @@ set('v', '<leader>fw', ":'<,'>!fmt -w 80<CR>", { desc = '[W]rap text 80' })
 set('t', 'jk', [[<C-\><C-n>]], opts)
 set('t', 'jj', [[<C-\><C-n>]], opts)
 set('t', 'kk', [[<C-\><C-n>]], opts)
+
+-- Custom keymaps
+-- Insert file name without extension inline
+function InsertFileNameNoExt()
+  local filename = vim.fn.expand '%:t:r'
+  local keys = vim.api.nvim_replace_termcodes(filename, true, false, true)
+
+  vim.api.nvim_feedkeys(keys, 'i', true)
+
+  print(keys)
+end
+
+vim.keymap.set('i', '<C-f>', InsertFileNameNoExt, { desc = 'Insert file name without extension' })

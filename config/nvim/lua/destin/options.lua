@@ -1,24 +1,24 @@
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.mouse = 'a'
+vim.opt.number = true -- show line numbers
+vim.opt.relativenumber = true -- show relative line numbers
+vim.opt.mouse = 'a' -- enable mouse support
 vim.opt.showmode = false -- controlled by status line
-vim.opt.wrap = false
-vim.opt.breakindent = true
-vim.opt.undofile = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.signcolumn = 'yes'
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-vim.opt.inccommand = 'split'
-vim.opt.cursorline = true
-vim.opt.scrolloff = 10
-vim.opt.laststatus = 3
+vim.opt.wrap = false -- disable line wrapping
+vim.opt.breakindent = true -- enable break indent
+vim.opt.undofile = true -- enable persistent undo
+vim.opt.ignorecase = true -- ignore case in search patterns
+vim.opt.smartcase = true -- override ignorecase if search pattern contains uppercase letters
+vim.opt.signcolumn = 'yes' -- always show sign column
+vim.opt.updatetime = 250 -- faster completion
+vim.opt.timeoutlen = 300 -- time to wait for a mapped sequence to complete
+vim.opt.splitright = true -- open vertical splits to the right
+vim.opt.splitbelow = true -- open horizontal splits below
+vim.opt.list = true -- show whitespace characters
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- define whitespace characters
+vim.opt.inccommand = 'split' -- show live substitutions
+vim.opt.cursorline = true -- highlight the current line
+vim.opt.scrolloff = 10 -- keep 10 lines above and below the cursor
+vim.opt.laststatus = 3 -- global status line
 
 -- Netrw settings
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 0 -- disable netrw banner
+vim.g.netrw_liststyle = 3 -- tree view
