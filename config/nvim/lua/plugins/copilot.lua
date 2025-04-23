@@ -2,14 +2,14 @@ return {
   {
     'github/copilot.vim',
     dependencies = {
-      {
-        'CopilotC-Nvim/CopilotChat.nvim',
-        dependencies = {},
-        build = 'make tiktoken', -- Only on MacOS or Linux
-        opts = {
-          model = 'claude-3.7-sonnet',
-        },
-      },
+      -- {
+      --   'CopilotC-Nvim/CopilotChat.nvim',
+      --   dependencies = {},
+      --   build = 'make tiktoken', -- Only on MacOS or Linux
+      --   opts = {
+      --     model = 'claude-3.7-sonnet',
+      --   },
+      -- },
     },
     config = function()
       local notify = require 'notify'
@@ -20,25 +20,25 @@ return {
       vim.keymap.set('i', '<C-.>', '<Plug>(copilot-suggest)')
       vim.keymap.set('i', '<C-f>', '<Plug>(copilot-accept-word)')
 
-      local opts = {
-        title = 'Copilot',
-        timeout = 1000,
-        render = 'compact',
-      }
-
-      vim.keymap.set('n', '<leader>cc', function()
-        vim.cmd 'CopilotChatToggle'
-      end, { desc = '[C]opilot Chat' })
-
-      vim.keymap.set('n', '<leader>cd', function()
-        vim.cmd 'Copilot disable'
-        notify('Copilot disabled', 'info', opts)
-      end, { desc = '[D]isable Copilot' })
-
-      vim.keymap.set('n', '<leader>ce', function()
-        vim.cmd 'Copilot enable'
-        notify('Copilot enable', 'info', opts)
-      end, { desc = '[E]nable Copilot ' })
+      -- local opts = {
+      --   title = 'Copilot',
+      --   timeout = 1000,
+      --   render = 'compact',
+      -- }
+      --
+      -- vim.keymap.set('n', '<leader>cc', function()
+      --   vim.cmd 'CopilotChatToggle'
+      -- end, { desc = '[C]opilot Chat' })
+      --
+      -- vim.keymap.set('n', '<leader>cd', function()
+      --   vim.cmd 'Copilot disable'
+      --   notify('Copilot disabled', 'info', opts)
+      -- end, { desc = '[D]isable Copilot' })
+      --
+      -- vim.keymap.set('n', '<leader>ce', function()
+      --   vim.cmd 'Copilot enable'
+      --   notify('Copilot enable', 'info', opts)
+      -- end, { desc = '[E]nable Copilot ' })
     end,
   },
 }

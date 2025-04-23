@@ -7,6 +7,11 @@ set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]ui
 
 set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- AI
+set('n', '<leader>ai', '<cmd>CodeCompanionActions<CR>', { desc = 'AI Actions' })
+set('n', '<leader>ac', '<cmd>CodeCompanionChat<CR>', { desc = 'AI Chat' })
+set({ 'n', 'v' }, '<leader>aa', '<cmd>CodeCompanion<CR>', { desc = 'AI Chat' })
+
 -- Window navigation
 set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })

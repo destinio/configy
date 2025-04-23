@@ -3,9 +3,25 @@ return {
   'sschleemilch/slimline.nvim',
   opts = {
     style = 'fg',
+    components = {
+      left = {
+        'mode',
+        'path',
+        'git',
+      },
+      center = {},
+      right = {
+        'diagnostics',
+        -- 'filetype_lsp',
+        'progress',
+      },
+    },
     configs = {
+      path = {
+        directory = false,
+      },
       diagnostics = {
-        workspace = true,
+        workspace = true, -- Whether diagnostics should show workspace diagnostics instead of current buffer
         icons = {
           ERROR = 'E ',
           WARN = 'W ',
@@ -13,27 +29,10 @@ return {
           INFO = 'I ',
         },
       },
-      progress = {
-        icon = ' ',
-      },
-      path = {
-        icons = {
-          folder = 'F ',
-          modified = 'M ',
-          read_only = 'R ',
-        },
-      },
-      git = {
-        icons = {
-          branch = 'B',
-          added = '+',
-          modified = '~',
-          removed = '-',
-        },
-      },
+      filetype_lsp = {},
     },
   },
   setup = function()
-    require('slimline').setup {}
+    -- require('slimline').setup {}
   end,
 }

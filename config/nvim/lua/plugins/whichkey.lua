@@ -52,6 +52,7 @@ return {
           { '<leader>t', group = '[T]oggle' },
           { '<leader>w', group = '[W]orkspace' },
           { '<leader>x', group = 'Trouble' },
+          { '<leader>a', group = 'AI' },
         },
       }
     end,
