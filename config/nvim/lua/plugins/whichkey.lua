@@ -46,7 +46,7 @@ return {
           { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
           { '<leader>d', group = '[D]ocument' },
           { '<leader>f', group = '[F]ind' },
-          { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+          { '<leader>h', group = 'Git Utils', mode = { 'n', 'v' } },
           { '<leader>r', group = '[R]ename' },
           { '<leader>s', group = '[S]auce' },
           { '<leader>t', group = '[T]oggle' },
