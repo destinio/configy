@@ -44,4 +44,5 @@ alias weather="curl -s https://wttr.in/madison?u | head -7 | tail -n 5"
 alias chat="clear && ollama run codegemma"
 
 ## tree
-alias tree="tree --gitignore -C -I 'node_modules|dist|build|.git'"
+alias t="tree --gitignore -C -I 'node_modules|dist|build|.git'"
+alias tf="tree -C -I 'node_modules|.git'"

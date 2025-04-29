@@ -1,31 +1,6 @@
 # Turn vi mode on for bash
 set -o vi
 
-# TODO: move to function file - we do not have this yet :(
-git_branch() {
-  git rev-parse --abbrev-ref HEAD 2>/dev/null
-}
-
-set_prompt() {
-  local branch=$(git_branch)
-  local reset='\[\e[0m\]'
-  local color='\[\e[38;5;37m\]'
-  local prompt='\W '"${color}>${reset} "
-
-  if [ -n "$branch" ]; then
-    # Calculate columns and spacing
-    local cols=$(tput cols)
-    local branch_text="[$branch]"
-    local branch_len=${#branch_text}
-    local pad=$((cols - branch_len))
-
-    # Move cursor to far right, print branch, then move to start of prompt
-    printf -v PS1 "\[\e[s\]\[\e[${pad}G\]%s\[\e[u\]%s" "$branch_text" "$prompt"
-  else
-    PS1="$prompt"
-  fi
-}
-
 # =====================
 # PATH Configuration
 # =====================
@@ -40,7 +15,6 @@ export TZ_WORK=America/New_York # change to your remote TZ
 export LANG=en_US.UTF-8
 export PROJECTS="$HOME/projects"
 export LESS=-R
-export PROMPT_COMMAND='set_prompt'
 
 # =====================
 # Interactive Shell Check
@@ -72,7 +46,7 @@ fi
 # =====================
 # Prompt Customization
 # =====================
-# PS1='\W \[\e[38;5;37m\]>\[\e[0m\] ' -- set_prompt function handles this -- see above
+PS1='\W \[\e[38;5;37m\]>\[\e[0m\] '
 
 # =====================
 # Bash Completion
