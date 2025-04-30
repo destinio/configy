@@ -4,9 +4,20 @@ source ./funcs.sh
 
 clear
 
-logit "Welcome let's create some environment links\n" -g
-
 HOME_DIR="$HOME"
+
+logit "Welcome let's get ya set UP!!!!\n" -g
+
+MUST_HAVE_DIRS=("$HOME_DIR/.local/bin" "$HOME_DIR/.config" "$HOME_DIR/apps")
+
+# Check if the directories exist, if not create them
+for dir in "${MUST_HAVE_DIRS[@]}"; do
+  if [ ! -d "$dir" ]; then
+    logit "Creating $dir\n" -g
+    mkdir -p "$dir"
+  fi
+done
+
 CONFIG_DIR="$HOME_DIR/.config"
 
 # Local dirs
@@ -29,6 +40,11 @@ for dir in "${LOCAL_DIRS[@]}"; do
   if [ ! -z "$files" ]; then
     for file in $files; do
       file=$(echo $file | cut -d'/' -f2)
+
+      if [[ $file == "README.md" ]]; then
+        continue
+      fi
+
       create_symlink "$(pwd)/$file" "$target$file"
     done
   fi
