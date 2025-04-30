@@ -43,16 +43,23 @@ return {
 
         -- Document existing key chains
         spec = {
+          { '<leader>a', group = 'AI' },
+          { '<leader>b', group = '[B]uffers Utils' },
           { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-          { '<leader>d', group = '[D]ocument' },
-          { '<leader>f', group = '[F]ind' },
-          { '<leader>h', group = 'Git Utils', mode = { 'n', 'v' } },
+          { '<leader>d', group = '[D]iagnostics' },
+          { '<leader>e', group = '[E]vent/Notification' },
+          { '<leader>f', group = '[F]ind (Telescope)' },
+          { '<leader>g', group = '[G]it Utils', mode = { 'n', 'v' } },
+          { '<leader>h', group = '[H]arpoon' },
+          { '<leader>n', group = '[N]avigation' },
           { '<leader>r', group = '[R]ename' },
           { '<leader>s', group = '[S]auce' },
           { '<leader>t', group = '[T]oggle' },
+          { '<leader>u', group = '[UI] Nvim UI' },
           { '<leader>w', group = '[W]orkspace' },
-          { '<leader>x', group = 'Trouble' },
-          { '<leader>a', group = 'AI' },
+          { '<leader>x', group = 'Dap - TODD' },
+          { '<leader>q', group = '[Q]uick Fix' },
+          { '<leader><leader>', group = 'Open Buffers' },
         },
       }
     end,

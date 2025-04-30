@@ -12,15 +12,23 @@ return {
     },
     config = function()
       local harpoon = require 'harpoon'
+      local notify = require 'notify'
 
       harpoon:setup()
 
-      vim.keymap.set('n', '<leader>a', function()
+      vim.keymap.set('n', '<leader>ha', function()
+        local file_name = vim.fn.expand '%:t' -- Get the current file name
+
         harpoon:list():add()
-      end)
-      vim.keymap.set('n', '<C-e>', function()
+
+        notify('Adding ' .. file_name .. ' to harpoon', 'info', {
+          title = 'Harpoon',
+          render = 'compact',
+        })
+      end, { desc = '[A]dd file to [h]arpoon' })
+      vim.keymap.set('n', '<leader>hh', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
-      end)
+      end, { desc = 'Toggle [h]arpoon menu' })
     end,
   },
 }

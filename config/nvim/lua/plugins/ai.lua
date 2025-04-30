@@ -1,6 +1,8 @@
 -- This file configures AI-related plugins for Neovim, including Avante for AI-assisted coding
 -- and additional dependencies for enhanced functionality like image pasting and markdown rendering.
 
+-- https://github.com/yetone/avante.nvim?tab=readme-ov-file#default-setup-configuration
+
 return {
   -- https://codecompanion.olimorris.dev/
   {
@@ -8,9 +10,11 @@ return {
     event = 'VeryLazy',
     version = false, -- Never set this value to "*"! Never!
     opts = {
-      -- add any opts here
-      -- for example
       provider = 'openai',
+      mappings = {},
+      windows = {
+        width = 40,
+      },
       openai = {
         endpoint = 'https://api.openai.com/v1',
         model = 'gpt-4o', -- your desired model (or use gpt-4o, etc.)
@@ -52,29 +56,4 @@ return {
       },
     },
   },
-  -- {
-  --   'olimorris/codecompanion.nvim',
-  --   opts = {},
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --     'nvim-treesitter/nvim-treesitter',
-  --   },
-  --   config = function()
-  --     require('codecompanion').setup {
-  --       display = {
-  --         diff = {
-  --           enabled = true,
-  --         },
-  --       },
-  --       strategies = {
-  --         chat = {
-  --           adapter = 'copilot',
-  --         },
-  --         inline = {
-  --           adapter = 'copilot',
-  --         },
-  --       },
-  --     }
-  --   end,
-  -- },
 }

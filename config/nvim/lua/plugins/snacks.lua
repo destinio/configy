@@ -29,14 +29,14 @@ return {
     },
     keys = {
       {
-        '<leader>n',
+        '<leader>eh',
         function()
           Snacks.notifier.show_history()
         end,
-        desc = 'Notification History',
+        desc = 'Event History',
       },
       {
-        '<leader>un',
+        '<leader>en',
         function()
           Snacks.notifier.hide()
         end,
@@ -50,18 +50,18 @@ return {
         desc = 'Delete Buffer',
       },
       {
-        '<leader>z',
+        '<leader>uz',
         function()
           Snacks.zen.zen()
         end,
-        desc = 'Toggle Zen Mode',
+        desc = 'Zen Mode',
       },
       {
-        '<leader>Z',
+        '<leader>uZ',
         function()
           Snacks.zen.zoom()
         end,
-        desc = 'Toggle Zoom',
+        desc = 'Zoom',
       },
       {
         '<leader>gB',
