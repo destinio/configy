@@ -1,42 +1,31 @@
-## Install
-- Rust `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+## NOTES
 
-### Lua
-- lua-lang-server - https://luals.github.io/#neovim-install
-    - `brew install lua-language-server`
-- StyleLua - `cargo install stylua --features lua54`
-    - https://github.com/JohnnyMorganz/StyLua
+### Install
 
-## Colors
-- Create - https://catbbrew.com/
+#### script
+`./install.sh`
 
-## Todo
+#### manual
+- https://github.com/neovim/neovim/blob/master/INSTALL.md#macos--os-x
+- navigate to
+  - https://github.com/neovim/neovim/releases
+- download
+  - `nvim-macos-arm64.tar.gz`
+  - see Assets section
+- run
+  - `xattr -c ./nvim-macos-arm64.tar.gz`
+    - (to avoid "unknown developer" warning)
+- extract
+  - `tar xzvf nvim-macos-arm64.tar.gz`
+- navigate to
+  - `cd ~/.local/bin/`
+- create symlink
+  - `ln -s ~/apps/nvim-macos-arm64/bin/nvim nvim`
+    - example ls
+      - `nvim@ -> /Users/destin/apps/nvim-macos-arm64/bin/nvim`
 
-- https://github.com/folke/snacks.nvim
-- https://github.com/folke/persistence.nvim
-- https://github.com/zbirenbaum/copilot.lua
-- https://github.com/CopilotC-Nvim/CopilotChat.nvim
-- https://github.com/zbirenbaum/copilot-cmp
-    - https://www.lazyvim.org/extras/ai/copilot#nvim-cmp-optional
 
-### Cli Tools
-- https://github.com/folke/ultra-runner
 
-## Notes
 
-- Check if executable by nvim = `:echo executable('lua-language-server')`
-
-### Auto CMP
+## To Read
 - omnifunc - `<C_x> C_o>` - `:h ins-completion`
-
-## TO READ
-
-## Help Docs
-- `:h ins-completion`
-- `:h insert.txt`
-
-## Posts
-- https://blog.boot.dev/clean-code/writing-good-unit-tests-dont-mock-database-connections/
-
-### plugins
-- https://github.com/ofirgall/open.nvim
