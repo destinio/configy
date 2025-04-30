@@ -1,16 +1,13 @@
 local set = vim.keymap.set
-
 local opts = { silent = true }
 
+-- General
 set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Quickfix
+set('n', '<leader>qq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-
--- AI
-set('n', '<leader>ai', '<cmd>CodeCompanionActions<CR>', { desc = 'AI Actions' })
-set('n', '<leader>ac', '<cmd>CodeCompanionChat<CR>', { desc = 'AI Chat' })
-set({ 'n', 'v' }, '<leader>aa', '<cmd>CodeCompanion<CR>', { desc = 'AI Chat' })
 
 -- Window navigation
 set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })

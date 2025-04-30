@@ -3,6 +3,7 @@ return {
   'sschleemilch/slimline.nvim',
   opts = {
     style = 'fg',
+    bold = true,
     components = {
       left = {
         'mode',

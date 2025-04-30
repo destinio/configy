@@ -17,6 +17,9 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- define whites
 vim.opt.inccommand = 'split' -- show live substitutions
 vim.opt.cursorline = true -- highlight the current line
 vim.opt.scrolloff = 10 -- keep 10 lines above and below the cursor
+
+-- lines
+vim.opt.cmdheight = 0 -- no command line height - cmd line comes back when needed
 vim.opt.laststatus = 3 -- global status line
 
 -- Netrw settings
